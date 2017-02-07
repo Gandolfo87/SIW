@@ -1,0 +1,709 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-image: url(../img/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#optionxs {
+	margin: 2%;
+	background-color: rgba(33, 29, 29, 0.7);
+}
+#loadLabel{
+	background-image: url(../img/upload.png);
+}
+
+.xsMenu {
+	color: white !important;
+}
+
+.optionBar {
+	margin-bottom: 0.9%;
+}
+
+#metronomoBar {
+	text-align: left;
+	margin-top: 1%;
+}
+
+#recbar {
+	text-align: right;
+	margin-top: 2%;
+	margin-right: -15px;
+}
+
+#metronomoBarxs {
+	text-align: center;
+}
+
+#traditionalNotation {
+	text-align: center;
+}
+
+#traditionalNotationxs {
+	margin-top: 5%;
+	text-align: center;
+}
+
+.optionButton {
+	margin-top: 4%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+	width: 30px;
+	height: 18px;
+}
+
+.optionButtonxs {
+	margin-top: 4%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+#buttonoptionxs {
+	background-color: rgba(33, 29, 29, 0.7);
+}
+
+.symbolButton {
+	margin: 0.5%;
+	width: 35px;
+	height: 35px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.noteButton {
+	margin: 0.5%;
+	width: 35px;
+	height: 35px;
+	margin-top: 5%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.symbolButtonxs {
+	margin: 0.5%;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.noteButtonxs {
+	width: 35px;
+	height: 35px;
+	margin: 0.5%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+label {
+	color: white;
+}
+
+.coloraTab {
+	text-align: center;
+	color: rgba(33, 29, 29, 0.8);
+}
+
+#menuSymbolButton {
+	margin-top: 3%;
+	text-align: center;
+}
+
+#menuSymbolButtonxs {
+	text-align: center;
+}
+
+.inputInfo {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+.inputInfoxs {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+#rigaZero {
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#primaRiga {
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#primaRigaxs {
+	background-color: rgba(33, 29, 29, 0.5);
+	text-align: center;
+}
+
+#secondaRiga {
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#terzaRiga {
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#quartaRiga {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+#quintaRiga {
+	margin-bottom: 15px;
+}
+
+.Dropdown {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+/*
+
+
+
+bottoni NoteButton
+
+
+
+*/
+#do {
+	background-image: url(../img/C.png);
+}
+
+#re {
+	background-image: url(../img/D.png);
+}
+
+#mi {
+	background-image: url(../img/E.png);
+}
+
+#fa {
+	background-image: url(../img/Fnote.png);
+}
+
+#sol {
+	background-image: url(../img/G.png);
+}
+
+#la {
+	background-image: url(../img/A.png);
+}
+
+#si {
+	background-image: url(../img/B.png);
+}
+
+#doxs {
+	background-image: url(../img/C.png);
+}
+
+#rexs {
+	background-image: url(../img/D.png);
+}
+
+#mixs {
+	background-image: url(../img/E.png);
+}
+
+#faxs {
+	background-image: url(../img/Fnote.png);
+}
+
+#solxs {
+	background-image: url(../img/G.png);
+}
+
+#laxs {
+	background-image: url(../img/A.png);
+}
+
+#sixs {
+	background-image: url(../img/B.png);
+}
+/*
+
+
+
+
+
+
+*/
+/*
+
+
+
+bottoni SymbolButton
+
+
+
+*/
+#sharp {
+	background-image: url(../img/sharp.png);
+}
+
+#doublesharp {
+	background-image: url(../img/doublesharp.png);
+}
+
+#neutral {
+	background-image: url(../img/neutral.png);
+}
+
+#flat {
+	background-image: url(../img/flat.png);
+}
+
+#doubleflat {
+	background-image: url(../img/doubleflat.png);
+}
+
+#cleftreble {
+	background-image: url(../img/cleftreble.png);
+}
+
+#restButton {
+	background-image: url(../img/rest.png);
+	background-size: 30%;
+}
+
+#endlineButton {
+	background-image: url(../img/endline.png);
+	background-size: 45%;
+}
+
+#clefalto {
+	background-image: url(../img/clefalto.png);
+}
+
+#clefbass {
+	background-image: url(../img/clefbass.png);
+}
+
+#singlebarline {
+	background-image: url(../img/singlebarline.png);
+}
+
+#doublebarline {
+	background-image: url(../img/doublebarline.png);
+}
+
+#close1barline {
+	background-image: url(../img/close1barline.png);
+}
+
+#close2barline {
+	background-image: url(../img/close2barline.png);
+}
+
+#repeat1barline {
+	background-image: url(../img/repeat1barline.png);
+}
+
+#repeat2barline {
+	background-image: url(../img/repeat2barline.png);
+}
+
+#repeat3barline {
+	background-image: url(../img/repeat3barline.png);
+}
+
+#tie {
+	background-image: url(../img/tie.png);
+}
+
+#pppp {
+	background-image: url(../img/pppp.png);
+}
+
+#ppp {
+	background-image: url(../img/ppp.png);
+}
+
+#pp {
+	background-image: url(../img/pp.png);
+}
+
+#p {
+	background-image: url(../img/p.png);
+}
+
+#mp {
+	background-image: url(../img/mp.png);
+}
+
+#sfz {
+	background-image: url(../img/sfz.png);
+}
+
+#mf {
+	background-image: url(../img/mf.png);
+}
+
+#ffff {
+	background-image: url(../img/ffff.png);
+}
+
+#fff {
+	background-image: url(../img/fff.png);
+}
+
+#ff {
+	background-image: url(../img/ff.png);
+}
+
+#f {
+	background-image: url(../img/f.png);
+}
+
+#chord {
+	background-image: url(../img/chord.png);
+}
+
+#sharpxs {
+	background-image: url(../img/sharp.png);
+}
+
+#doublesharpxs {
+	background-image: url(../img/doublesharp.png);
+}
+
+#neutralxs {
+	background-image: url(../img/neutral.png);
+}
+
+#flatxs {
+	background-image: url(../img/flat.png);
+}
+
+#doubleflatxs {
+	background-image: url(../img/doubleflat.png);
+}
+
+#cleftreblexs {
+	background-image: url(../img/cleftreble.png);
+}
+
+#restButtonxs {
+	background-image: url(../img/rest.png);
+}
+
+#enldineButton {
+	background-image: url(../img/endline.png);
+}
+
+#clefaltoxs {
+	background-image: url(../img/clefalto.png);
+}
+
+#clefbassxs {
+	background-image: url(../img/clefbass.png);
+}
+
+#singlebarlinexs {
+	background-image: url(../img/singlebarline.png);
+}
+
+#doublebarlinexs {
+	background-image: url(../img/doublebarline.png);
+}
+
+#close1barlinexs {
+	background-image: url(../img/close1barline.png);
+}
+
+#close2barlinexs {
+	background-image: url(../img/close2barline.png);
+}
+
+#repeat1barlinexs {
+	background-image: url(../img/repeat1barline.png);
+}
+
+#repeat2barlinexs {
+	background-image: url(../img/repeat2barline.png);
+}
+
+#repeat3barlinexs {
+	background-image: url(../img/repeat3barline.png);
+}
+
+#tiexs {
+	background-image: url(../img/tie.png);
+}
+
+#ppppxs {
+	background-image: url(../img/pppp.png);
+}
+
+#pppxs {
+	background-image: url(../img/ppp.png);
+}
+
+#ppxs {
+	background-image: url(../img/pp.png);
+}
+
+#pxs {
+	background-image: url(../img/p.png);
+}
+
+#mpxs {
+	background-image: url(../img/mp.png);
+}
+
+#sfzxs {
+	background-image: url(../img/sfz.png);
+}
+
+#mfxs {
+	background-image: url(../img/mf.png);
+}
+
+#ffffxs {
+	background-image: url(../img/ffff.png);
+}
+
+#fffxs {
+	background-image: url(../img/fff.png);
+}
+
+#ffxs {
+	background-image: url(../img/ff.png);
+}
+
+#fxs {
+	background-image: url(../img/f.png);
+}
+
+#chordxs {
+	background-image: url(../img/chord.png);
+}
+/*
+
+
+
+*/
+/*
+
+
+
+bottoni OptionButton
+
+
+
+*/
+#playStopBarxs {
+	text-align: center;
+}
+
+#play {
+	background-color: black;
+	background-image: url(../img/play.png);
+}
+
+#pause {
+	background-color: black;
+	background-image: url(../img/pause.png);
+}
+
+#stop {
+	background-color: black;
+	background-image: url(../img/stop.png);
+}
+
+#save {
+	background-image: url(../img/save.png);
+}
+
+#reset {
+	background-image: url(../img/reset.png);
+}
+
+#download {
+	background-image: url(../img/download.png);
+}
+
+#undo {
+	background-image: url(../img/undo.png);
+}
+
+#redo {
+	background-image: url(../img/redo.png);
+}
+
+#rec {
+	margin-top: 1%;
+	background-image: url(../img/rec.png);
+	background-size: contain;
+	background-color: black;
+}
+
+#pausexs {
+	background-color: black;
+	background-image: url(../img/pause.png);
+}
+
+#playxs {
+	background-color: black;
+	background-image: url(../img/play.png);
+}
+
+#stopxs {
+	background-color: black;
+	background-image: url(../img/stop.png);
+}
+
+#savexs {
+	background-image: url(../img/save.png);
+}
+
+#resetxs {
+	background-image: url(../img/reset.png);
+}
+
+#downloadxs {
+	background-image: url(../img/download.png);
+}
+
+#undoxs {
+	background-image: url(../img/undo.png);
+}
+
+#redoxs {
+	background-image: url(../img/redo.png);
+}
+
+#recxs {
+	margin-top: 1%;
+	background-image: url(../img/rec.png);
+	background-size: contain;
+	background-color: black;
+}
+/*
+
+
+
+*/
+#lenght {
+	text-align: left;
+	margin-top: 7%;
+}
+
+#pitch {
+	text-align: right;
+	margin-top: 7%;
+}
+
+.pitchLenght {
+	margin-top: 5%;
+}
+
+#Spartito {
+	background-image: url(../img/pergamena.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+svg {
+	margin-left: -15px;
+}
+
+.rect {
+	background-color: green !important;
+}
+
+.cursor-editor {
+	width: 500px;
+	margin-top: 12px;
+}
+
+.cursor-nav {
+	margin-bottom: 6px;
+}
+
+.cursor {
+	background-color: rgba(196, 196, 196, .5);
+}
+
+#abc {
+	width: 50%;
+}
+
+#headers {
+	width: 50%;
+}
+
+#noteMenuEdit {
+	background-color: rgba(33, 29, 29, 0.7) !important;
+	/*display:none;*/
+	width: 350px !important;
+	padding: 5px !important;
+	color: white !important;
+}
+
+.buttonMenuEdit {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+#editNote {
+	background-color: rgba(33, 29, 29, 0.7);
+	width: 50px !important;
+}
+
+#score {
+	width: 200%;
+	background-color: white;
+	border: 2px solid #D4D4D4;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 7px 7px 7px 7px;
+}
+
+.click_menu {
+	background-color: rgba(33, 29, 29, 0.7);
+	border: 1px solid #D4D4D4;
+	border-radius: 3px 3px 3px 3px;
+	font-size: 0.9em;
+	color: white;
+	/*display: none ;*/
+	position: fixed !important;
+	padding: 3px;
+}
+
+.editNote_menu {
+	background-color: rgba(33, 29, 29, 0.7);
+	border: 1px solid #D4D4D4;
+	border-radius: 3px 3px 3px 3px;
+	font-size: 0.9em;
+	color: white;
+	/*display: none ;*/
+	position: fixed;
+	padding: 3px;
+}
