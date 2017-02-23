@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+	zoom: 0.80 !important;
+	overflow-x: hidden;
+}
+
+body {
+	background: url(../img/bg-director.jpg) no-repeat center center fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#main-navbar {
+	background-color: rgba(22, 22, 22, 0.78);
+}
+
+#submit-btn {
+	border-radius: 11px !important;
+}
+
+.panel {
+	border-radius: 15px !important;
+}
+
+.panel-heading {
+	background-color: rgba(33, 29, 29, 0.20) !important;
+	height: 45px;
+}
+
+.panel-body {
+	color: black;
+	width: auto !important;
+}
+
+#draft-title {
+	border-top-left-radius: 11px;
+	border-bottom-left-radius: 11px;
+}
+
+.panel-default {
+	border: none !important;
+	background-color: rgba(255,255,255,0.92)
+}
+
+#results-section {
+
+	width: 60%;
+	height: auto;
+}
+
+a{
+	color: blue;
+	
+}
+
+
+#res-container {
+	font-size: 19px;
+	align-content: center !important;
+	width: 100%;
+	background-color: transparent;
+}
+
+#search-btn {
+	height: 34px;
+	border-top-right-radius: 11px;
+	border-bottom-right-radius: 11px;
+}
+
+#search-bar {
+	border-top-left-radius: 11px;
+	border-bottom-left-radius: 11px;
+}
+
+#separator {
+	height: 20%;
+}
+
+::-webkit-scrollbar {
+	width: 12px; /* for vertical scrollbars */
+	height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 922px) {
+  		#separator {
+		height: 30%;}
+	
+	#main-navbar {
+	background-color: rgba(22, 22, 22, 1.00);
+}
+	
+	.dropdown-menu{
+		background-color: white!important;
+	}
+	
+	
+	#results-section {
+
+	width: 100%;
+	height: auto;
+}
+  }

@@ -1,0 +1,137 @@
+
+
+html{
+	zoom:0.80 !important;
+}
+
+#main-navbar{
+		background-color: rgba(50,50,50,0.45);
+	
+}
+
+#main-body{
+	 background: url(../img/muti33-bg.jpg) no-repeat !important;
+	
+	 -webkit-background-size: 110% !important;
+	background-origin: padding-box;
+	background-position: -25px -29px !important;
+	background-size: 110% !important;
+
+
+}
+
+
+
+#theLogo{
+	width: 60%;
+}
+
+#logo{
+		
+	
+	 background-image: url(../img/logo.png) no-repeat !important;
+	 background-position:center !important; 
+	 background-size: auto!important;
+	-webkit-background-size: auto !important;
+}
+
+
+#testo-logo{
+	visibility: hidden;
+}
+
+
+#login-form{
+	border-radius: 8px;
+	border: 1px solid rgba(166,155,155,0.62);
+	font-size: 90%;
+	background-color: rgba(47,47,47,0.63);
+	color:white;
+	width: 250px;
+	height: auto;
+}
+
+
+.help-block{
+	color: goldenrod !important;
+	font-size: 75%;
+}
+
+
+.separator{
+	
+	background-color: transparent;
+}
+
+
+#submit-btn{
+	border-radius: 5px;
+	
+	
+}
+
+.checkbox{
+
+	text-align: center;
+	
+}
+
+#register-btn{
+	cursor: pointer;
+}
+
+
+#myModal{
+	
+	background-color: rgba(146,139,139,0.45);
+}
+.modal-content{
+	border-radius: 22px;
+	background-color: rgba(29,26,26,0.88) ;
+	
+}
+
+
+
+
+
+.form-group{
+	border-radius: 5px;
+}
+
+
+
+@media (max-width: 768px){
+
+	
+	
+	
+	#main-body{
+		background-image: none !important;
+	}
+
+	
+	
+}
+
+#chi {
+	top: 15px;
+}
+
+
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,187 @@
+html {
+	zoom: 0.80;
+	width: 90%;
+	height: 100%;
+	background: url(../img/violin-bg.jpg) no-repeat center top fixed;
+	background-size: cover;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.0) !important;
+	background-size: auto;
+}
+
+.intro {
+	background-color: rgba(168, 148, 149, 1.00);
+	height: auto;
+}
+
+#main-navbar {
+	background-color: rgba(22, 22, 22, 0.78);
+}
+
+/* row 0 handling*/
+#row0 {
+	height: 19.6%;
+}
+
+.row0-div {
+	height: 100%;
+}
+
+/* row 0 handling*/
+
+/* row 0 handling*/
+#row1 {
+	position: fixed;
+	width: 110%;
+	height: 100%;
+}
+
+.row1-div {
+	position: relative;
+	top: 15px;
+	height: auto;
+}
+
+/* row 0 handling*/
+#search-btn {
+	height: 34px;
+	border-top-right-radius: 11px;
+	border-bottom-right-radius: 11px;
+}
+
+#search-bar {
+	border-top-left-radius: 11px;
+	border-bottom-left-radius: 11px;
+}
+
+#dashboard-container {
+	width: auto;
+	height: auto;
+	border-radius: 10px;
+	background-color: rgba(22, 22, 22, 0.78);
+}
+
+#dashboard-container>div>ul>li>a {
+	border-radius: 0px;
+	font-size: 120%;
+	color: white;
+}
+
+#dashboard-container>div>ul>li>a:hover {
+	background-color: rgba(126, 173, 217, 0.76);
+}
+
+#dashboard-container>div>ul>li>a:active {
+	color: black;
+	background-color: white;
+}
+
+.dash-item {
+	color: white;
+}
+
+#dashboard-window>div {
+	overflow-y: scroll;
+	width: 80%;
+	height: 500px;
+	color: white;
+	background-color: rgba(22, 22, 22, 0.78);
+	border-radius: 10px;
+}
+
+#go-to-editor-btn, #go-to-scores-btn {
+	cursor: pointer;
+}
+
+#logo {
+	
+}
+
+/* editing con webkit della scrollbar */
+::-webkit-scrollbar {
+	width: 12px; /* for vertical scrollbars */
+	height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.panel {
+	width: auto;
+	border-radius: 15px !important;
+}
+
+.panel-body {
+	color: black;
+	width: 100% !important;
+}
+
+#draft-title {
+	border-top-left-radius: 11px;
+	border-bottom-left-radius: 11px;
+}
+
+.panel-default {
+	width: inherit;
+	border: none !important;
+	background-color: rgba(255, 255, 255, 0.92)
+}
+
+#results-section {
+	width: auto;
+	height: auto;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: gray;
+}
+
+a:focus {
+	color: rgba(42, 116, 216, 0.87);
+}
+
+#res-container {
+	font-size: 19px;
+	align-content: center !important;
+	width: 100%;
+	background-color: transparent;
+}
+
+.glyphicon-remove {
+	color: red !important;
+}
+
+/* extra smll handling*/
+@media ( max-width : 991px) {
+	html {
+		width: 100%;
+	}
+	#row1 {
+		position: relative;
+		width: auto;
+		height: auto;
+	}
+	#dashboard-window>div {
+		width: 100%;
+		height: auto;
+	}
+	#main-navbar {
+		background-color: rgba(22, 22, 22, 1.00);
+	}
+	#row1 {
+		top: 100px;
+	}
+}

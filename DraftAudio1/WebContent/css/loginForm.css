@@ -1,0 +1,206 @@
+html {
+  width: 100%;
+  height: 100%;
+background: url(../img/LOGIN.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+	
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: transparent;
+}
+
+#row0{
+	height: 20%;
+}
+
+#row1{
+	height: 65%;
+}
+
+#row2{
+	height: 30%;
+}
+
+.col-row-1{
+	height: 100%;
+}
+
+#login-container {
+	width: auto;
+	height: auto;
+	background-color: rgba(22,21,21,0.70);
+	border: 1px solid rgba(23,84,207,0.28);
+	color: white;
+}
+
+.login-column {
+	text-align: center;
+	
+	font-size: 200%; 
+}
+
+.title-login-row{
+	
+	height: 60px;
+}
+
+.separator{
+	height: 10px;
+	background-color: transparent;
+}
+
+#submit-button {
+	width: 100%;
+}
+
+
+#check-button{
+	text-align: center;
+}
+
+.help {
+	text-align: right;
+}
+
+
+
+/*RESPONSIVITY HANDLING*/
+
+
+/*xs*/
+@media (max-width: 768px) {
+	
+	#login-container{
+		width: auto;
+	}
+	
+	#row0{
+		height: auto;
+	}
+	
+    #row1 {
+        height: 20%;
+    }
+	
+	#row2{
+	height: 20%;
+}
+}
+
+/*sm*/
+@media (max-width: 991px) {
+	
+		#login-container{
+		width: auto;
+	}
+	
+	#row0{
+		height: auto;
+	}
+	
+    #row1 {
+        height: 20%;
+    }
+	
+	#row2{
+	height: 20%;
+}
+}
+
+
+
+
+
+/*
+#login-container{
+	
+	font-size: 200%;
+	height: 70%;
+	background-color: rgba(51,51,51,0.75);
+	position: relative;
+	left: 60%;
+	top: 15%;
+	border: 2px solid rgba(0,100,255,0.25);
+}
+
+
+ul {
+	 text-align: left;
+  list-style-type: none;
+}
+
+input[type=text], input[type=password] {
+		font-size: 50%;
+	 text-align: left;
+    width: 100%;
+    padding: 3% 10%;
+    margin: 2% -5%;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+	font-size: 75%;
+    background-color: rgba(211,26,30,0.56);
+    color: white;
+	
+    padding: 3% 10%;
+  	margin: 8% -5%;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+label{
+	font-size: 70%;
+	position: relative;
+	
+	left: -5%;
+	
+}
+
+#remember{
+	position: relative;
+	margin-left: 20%;
+}
+
+#remember-text{
+	font-size: 60%;
+}
+
+.forgot-container{
+	
+	background-color: transparent;
+}
+
+
+a{
+	color: rgba(255,126,0,1.00);
+}
+
+.psw{
+	
+	font-size: 50%;
+	
+}
+
+#about{
+	text-align: center;
+}
+
+
+.intro-text{
+	text-align: left;
+	font-size: 200%;
+	
+	position: relative;
+	top: 50%;
+}*/

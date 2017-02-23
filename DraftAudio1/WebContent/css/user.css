@@ -1,0 +1,617 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+	zoom:0.80 !important;
+}
+
+body {
+	
+	background: url(../img/user-bg.jpg) no-repeat center center fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+
+#optionxs {
+	margin: 2%;
+	background-color: rgba(33, 29, 29, 0.7);
+}
+
+.xsMenu {
+	color: white !important;
+}
+
+#metronomoBar {
+	display : none;
+	text-align: left;
+	margin-top: 1%;
+}
+
+#recbar {
+	text-align: right;
+	margin-top: 2%;
+	margin-right: -15px;
+}
+
+#metronomoBarxs {
+	display : none;
+	text-align: center;
+}
+
+#traditionalNotation {
+	text-align: center;
+}
+
+#traditionalNotationxs {
+	margin-top: 5%;
+	text-align: center;
+}
+
+.optionButton {
+	margin-top: 4%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+	width: 30px;
+	height: 18px;
+}
+
+.optionButtonxs {
+	margin-top: 4%;
+	margin-right: 1%;
+	margin-left: 1%;
+	margin-bottom: 2%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+#buttonoptionxs {
+	background-color: rgba(33, 29, 29, 0.7);
+}
+
+.symbolButton {
+	margin: 0.5%;
+	width: 35px;
+	height: 35px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.noteButton {
+	margin: 0.5%;
+	width: 35px;
+	height: 35px;
+	margin-top: 5%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.symbolButtonxs {
+	margin: 0.5%;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+.noteButtonxs {
+	width: 35px;
+	height: 35px;
+	margin: 0.5%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 229, 175, 1.00);
+}
+
+label {
+	color: white;
+}
+
+#menuSymbolButton {
+	margin-top: 3%;
+	text-align: center;
+}
+
+#menuSymbolButtonxs {
+	text-align: center;
+}
+
+.inputInfo {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+.inputInfoxs {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+#rigaZero {
+	display : none;
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#primaRiga {
+	display : none;
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#primaRigaxs {
+	background-color: rgba(33, 29, 29, 0.5);
+	text-align: center;
+}
+
+#secondaRiga {
+	display :none;
+	background-color: rgba(33, 29, 29, 1.0);
+}
+
+#terzaRiga {
+	background-color: rgba(33, 29, 29, 0.5);
+}
+
+#quartaRiga {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+#quintaRiga {
+	display : none;
+	margin-bottom: 15px;
+}
+
+.Dropdown {
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+/*
+
+
+
+bottoni NoteButton
+
+
+
+*/
+#do, #doxs {
+	background-image: url(../img/C.png);
+}
+
+#re, #rexs {
+	background-image: url(../img/D.png);
+}
+
+#mi, #mixs {
+	background-image: url(../img/E.png);
+}
+
+#fa, #faxs {
+	background-image: url(../img/Fnote.png);
+}
+
+#sol, #solxs {
+	background-image: url(../img/G.png);
+}
+
+#la, #laxs {
+	background-image: url(../img/A.png);
+}
+
+#si, #sixs {
+	background-image: url(../img/B.png);
+}
+/*
+
+
+
+
+
+
+*/
+/*
+
+
+
+bottoni SymbolButton
+
+
+
+*/
+#sharp, #sharpxs {
+	background-image: url(../img/sharp.png);
+}
+
+#doublesharp, #doublesharpxs {
+	background-image: url(../img/doublesharp.png);
+}
+
+#neutral, #neutralxs {
+	background-image: url(../img/neutral.png);
+}
+
+#flat, #flatxs {
+	background-image: url(../img/flat.png);
+}
+
+#doubleflat, #doubleflatxs {
+	background-image: url(../img/doubleflat.png);
+}
+
+#cleftreble, #cleftreblexs {
+	background-image: url(../img/cleftreble.png);
+}
+
+#restButton, #restButtonxs {
+	background-image: url(../img/rest.png);
+	background-size: 30%;
+}
+
+#endlineButton, #endlineButtonxs {
+	background-image: url(../img/endline.png);
+	background-size: 45%;
+}
+
+#clefalto, #clefaltoxs {
+	background-image: url(../img/clefalto.png);
+}
+
+#clefbass, #clefbassxs {
+	background-image: url(../img/clefbass.png);
+}
+
+#singlebarline, #singlebarlinexs {
+	background-image: url(../img/singlebarline.png);
+}
+
+#doublebarline, #doublebarlinexs {
+	background-image: url(../img/doublebarline.png);
+}
+
+#close1barline, #close1barlinexs {
+	background-image: url(../img/close1barline.png);
+}
+
+#close2barline, #close2barlinexs {
+	background-image: url(../img/close2barline.png);
+}
+
+#repeat1barline, #repeat1barlinexs {
+	background-image: url(../img/repeat1barline.png);
+}
+
+#repeat2barline, #repeat2barlinexs {
+	background-image: url(../img/repeat2barline.png);
+}
+
+#repeat3barline, #repeat3barlinexs {
+	background-image: url(../img/repeat3barline.png);
+}
+
+#tie, #tiexs {
+	background-image: url(../img/tie.png);
+}
+
+#pppp, #ppppxs {
+	background-image: url(../img/pppp.png);
+}
+
+#ppp, #pppxs {
+	background-image: url(../img/ppp.png);
+}
+
+#pp, #ppxs {
+	background-image: url(../img/pp.png);
+}
+
+#p, #pxs {
+	background-image: url(../img/p.png);
+}
+
+#mp, #mpxs {
+	background-image: url(../img/mp.png);
+}
+
+#sfz, #sfzxs {
+	background-image: url(../img/sfz.png);
+}
+
+#mf, #mfxs {
+	background-image: url(../img/mf.png);
+}
+
+#ffff, #ffffxs {
+	background-image: url(../img/ffff.png);
+}
+
+#fff, #fffxs {
+	background-image: url(../img/fff.png);
+}
+
+#ff, #ffxs {
+	background-image: url(../img/ff.png);
+}
+
+#f, #fxs {
+	background-image: url(../img/f.png);
+}
+
+#chord, #chordxs {
+	background-image: url(../img/chord.png);
+}
+/*
+
+
+
+*/
+/*
+
+
+
+bottoni OptionButton
+
+
+
+*/
+#playStopBarxs {
+	text-align: center;
+}
+
+#play, #playxs {
+	background-color: black;
+	background-image: url(../img/play.png);
+}
+
+#pause, #pausexs {
+	background-color: black;
+	background-image: url(../img/pause.png);
+}
+
+#stop, #stopxs {
+	background-color: black;
+	background-image: url(../img/stop.png);
+}
+
+#save, #savexs {
+	background-image: url(../img/save.png);
+		background-color: white!important;
+}
+
+#reset, #resetxs {
+	display : none;
+	background-image: url(../img/reset.png);
+		background-color: white!important;
+}
+
+#download, #downloadxs {
+	display : none;
+	background-image: url(../img/download.png);
+}
+
+#upload, #uploadxs {
+	display : none;
+	background-image: url(../img/upload.png);
+}
+
+#undo, #undoxs {
+	display : none;
+	background-image: url(../img/undo.png);
+}
+
+#redo, #redoxs {
+	display : none;
+	background-image: url(../img/redo.png);
+}
+
+#rec, #recxs {
+	display : none;
+	margin-top: 1%;
+	background-image: url(../img/rec.png);
+	background-size: contain;
+	background-color: black;
+}
+/*
+
+
+
+*/
+#lenght {
+	text-align: left;
+	margin-top: 7%;
+}
+
+#pitch {
+	text-align: right;
+	margin-top: 7%;
+}
+
+.pitchLenght {
+	margin-top: 5%;
+}
+
+#Spartito {
+	background-image: url(../img/paper.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+svg {
+	margin-left: -15px;
+}
+
+.rect {
+	background-color: green !important;
+}
+
+.cursor-editor {
+	width: 500px;
+	margin-top: 12px;
+}
+
+.cursor-nav {
+	margin-bottom: 6px;
+}
+
+.cursor {
+	background-color: rgba(196, 196, 196, .5);
+}
+
+#textRiga {
+	display: none;
+}
+
+#abc {
+	width: 50%;
+}
+
+#headers {
+	width: 50%;
+}
+
+#noteMenuEdit {
+	display : none;
+	background-color: rgba(33, 29, 29, 0.7) !important;
+	/*display:none;*/
+	width: 350px !important;
+	padding: 5px !important;
+	color: white !important;
+}
+
+.buttonMenuEdit {
+		display : none;
+	background-color: rgba(33, 29, 29, 0.7);
+	color: white;
+}
+
+#editNote {
+		display : none;
+	background-color: rgba(33, 29, 29, 0.7);
+	width: 50px !important;
+}
+
+#score {
+	width: 200%;
+	background-color: white;
+	border: 2px solid #D4D4D4;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 7px 7px 7px 7px;
+}
+
+.click_menu {
+	background-color: rgba(33, 29, 29, 0.7);
+	border: 1px solid #D4D4D4;
+	border-radius: 3px 3px 3px 3px;
+	font-size: 0.9em;
+	color: white;
+	/*display: none ;*/
+	position: fixed !important;
+	padding: 3px;
+}
+
+.editNote_menu {
+	background-color: rgba(33, 29, 29, 0.7);
+	border: 1px solid #D4D4D4;
+	border-radius: 3px 3px 3px 3px;
+	font-size: 0.9em;
+	color: white;
+	/*display: none ;*/
+	position: fixed;
+	padding: 3px;
+	
+}
+
+
+
+#comment-section {
+	
+	border-radius : 11px;
+	background-color:rgba(33, 29, 29, 0.4);
+	
+}
+
+.comment{
+	color: white;
+	background-color: gray;
+	border-radius: 10px;
+	
+}
+
+.panel{
+	border-radius:15px !important;
+	
+	
+}
+
+.panel-body{
+	width: auto !important;
+}
+
+
+.user-comment{
+	padding: 5px !important;
+
+}
+
+#submit-btn{
+	border-radius: 11px !important;
+}
+
+
+.panel-heading{
+	
+	border-bottom: 1px solid black !important;
+	background-color: rgba(33, 29, 29, 0.20) !important;
+	border-top-left-radius: 11px;
+	border-top-right-radius: 11px;
+}
+
+.panel-default{
+	border: 2px solid black !important;
+}
+
+
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+#fork, #forkxs{
+	background-image: url(../img/share.png);
+	background-color: white!important;
+}
+
+#like, #likexs{
+	background-image: url(../img/like.png);
+		background-color: white!important;
+
+}

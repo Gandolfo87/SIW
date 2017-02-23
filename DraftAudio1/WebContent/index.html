@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>DraftAudio</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+
+<!-- Theme CSS -->
+<link href="css/grayscale.css" rel="stylesheet">
+<link href="css/landing-test.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="js/SignUp.js"></script>
+<script src="js/login.js"></script>
+<!-- Theme JavaScript -->
+<script src="js/grayscale.min.js"></script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+
+	<!-- Navigation -->
+	<nav id="main-navbar" class="navbar navbar-custom navbar-fixed-top"
+		role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					Menu <em class="fa fa-bars"></em>
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top"> <i
+					class="glyphicon glyphicon-music"></i> <span class="light">Draft</span>Audio
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+
+
+
+					<li class="hidden"><a href="#page-top"></a></li>
+					<li><a class="page-scroll" href="#about">About</a></li>
+					<li><a type="button" id="register-btn" data-toggle="modal"
+						data-target="#myModal">Register</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><strong>Login</strong> <span
+							class="caret"></span></a>
+						<ul id="login-form" class="dropdown-menu">
+
+							<li>
+								<div class="row">
+									<div class="col-md-12 text-left">
+
+										<div class="row separator"></div>
+										<div class="row separator"></div>
+										<form onsubmit="return logIn(this)" class="form" role="form" action="profile.jsp"
+											accept-charset="UTF-8" id="login-nav">
+											<div class="form-group col-md-12">
+												<label for="email">Email address:</label> <input
+													type="email" class="form-control" name = "Email" id="exampleInputEmail2"
+													placeholder="Email address" required>
+											</div>
+
+											<div class="form-group col-md-12">
+												<label for="email">Password:</label> <input type="password"
+													class="form-control" id="exampleInputPwdl2"
+													placeholder="Password" required>
+												<div class="help-block text-right">
+													<a href="">Forget the password ?</a>
+												</div>
+											</div>
+
+											<div class="form-group col-md-offset-0 col-md-12">
+												<button type="submit"
+													class="btn btn-primary btn-block btn-sm" id="submit-btn">Sign
+													in</button>
+											</div>
+
+											<div class="checkbox col-md-offset-0 col-md-12">
+												<label> <input type="checkbox"> keep me
+													logged-in
+												</label>
+											</div>
+
+
+										</form>
+									</div>
+
+								</div>
+
+
+							</li>
+
+
+						</ul></li>
+
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Intro Header -->
+	<header class="intro">
+		<div class="intro-body" id="main-body">
+			<div class="container">
+				<div class="row" id="logo-row">
+					<div class="col-md-offset-0 col-md-12">
+						<h1 class="brand-heading text-center img-responsive" id="logo">
+							<span id="testo-logo"> Logo </span> <img id="theLogo"
+								class="img-responsive center-block" src="img/logo-white2.png">
+						</h1>
+						<p class="intro-text">
+							“<em>Without music, life would be a mistake</em>.” <br>
+							Friedrich Nietzsche<br>
+						</p>
+						<a href="#about" class="btn btn-circle page-scroll"> <i
+							class="fa fa-angle-double-down animated"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- About Section -->
+	<section id="about" class="container content-section text-center">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h2>About DraftAudio</h2>
+				<p>
+					<em> DraftAudio</em> is a new generation platform to compose and
+					share your music in a simple and effective way! In agreement with <a
+						href="https://www.safecreative.org/">SafeCreative</a> to protect
+					the rights of the composeres, you can freely share your music
+					without any problems or complications .
+				</p>
+				<p>
+					Take a look to our <a
+						href="https://www.youtube.com/watch?v=v6IxHWtSc2c">channel</a> on
+					Youtube for tutorial, demo and much more!
+				</p>
+				<p>
+					<em> DraftAudio</em> includes a fully functioning keyboard, which
+					supports the latest MIDI protocol, connect your MIDI devices and
+					free your inspiration!
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="container content-section text-center"></section>
+
+
+
+
+
+</body>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content col-md-10 col-md-offset-1">
+
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Register!</h4>
+			</div>
+
+
+
+			<div class="modal-body">
+
+
+
+				<div class="row">
+					<div class="text-left col-md-12">
+
+						<div class="row separator"></div>
+						<div class="row separator"></div>
+						<form onsubmit="return register(this)" class="form" role="form" action="profile.jsp"
+							accept-charset="UTF-8" id="register-nav">
+
+
+
+							<div class="form-group col-md-6">
+								<label for="nickname">Nickname:</label> <input type="nickname"
+									class="form-control" name="nickName" id="registerInputNickname"
+									placeholder="Nickname" required>
+							</div>
+
+
+							<div class="form-group col-md-6">
+								<label for="email">Email address:</label> <input name = "email" type="email"
+									class="form-control" id="registerInputEmail2"
+									placeholder="Email address" required>
+							</div>
+
+
+							<!-- nome e cognome-->
+
+							<div class="form-group col-md-6">
+								<label for="name">Name:</label> <input name = "name" type="name"
+									class="form-control" id="registerInputName" placeholder="Name"
+									required>
+							</div>
+
+
+							<div class="form-group col-md-6">
+								<label for="surname">Surname:</label> <input name = "surname" type="surname"
+									class="form-control" id="registerInputSurname"
+									placeholder="Surname" required>
+							</div>
+							<!-- nome e cognome-->
+
+							<div class="form-group col-md-12">
+
+								<label for="email">Password:</label> <input name = "password" type="password"
+									class="form-control" id="resgisterInputPwd2"
+									placeholder="Password" required>
+
+							</div>
+
+<!-- 
+							<div class="form-group col-md-12">
+
+								<label for="email">Confirm Password:</label> <input
+									type="password" class="form-control"
+									id="confirm-resgisterInputPwd2" placeholder="Confirm Password"
+									required>
+
+							</div>
+
+ -->
+
+							<div class="form-group col-md-offset-0 col-md-12" id="chi">
+								<button type="submit"
+									class="btn btn-primary btn-block form-group btn-lg media-bottom">Submit</button>
+							</div>
+
+
+
+
+						</form>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+			</div>
+
+
+
+			<div class="modal-footer">
+
+
+				<div class="form-group col-md-4 col-md-offset-8 btn-lg">
+					<button id="modalFooter-cancel" type="button"
+						class="btn btn-danger btn-block form-group" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+</div>
+
+
+</html>
