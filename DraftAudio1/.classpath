@@ -8,12 +8,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio/liberie/jackson-annotations-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio/liberie/jackson-core-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio/liberie/jackson-databind-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio/liberie/org.restlet.lib.org.json-2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Domenico/Downloads/mysqlconnectorjava6.0.5bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/jstl-1.2_1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/jackson-annotations-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/jackson-core-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/jackson-databind-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/mysqlconnectorjava6.0.5bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Domenico/workspace/SIW/DraftAudio1/liberie/org.restlet.lib.org.json-2.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

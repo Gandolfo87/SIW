@@ -17,6 +17,10 @@ body {
 	background-color: rgba(33, 29, 29, 0.7);
 }
 
+#Composistion{
+	display: none;
+}
+
 .xsMenu {
 	color: white !important;
 }

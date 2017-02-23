@@ -131,11 +131,11 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-4">
-							<a href="www.google.it"><%out.print(l.getName()); %></a>
+							<a href="ShowDraft?id=<%l.getId();%>"><%out.print(l.getName()); %></a>
 						</div>
 						<div class="col-md-3">1/9/1939</div>
 						<div class="col-md-3">
-							<a href="www.youtube.it"><% out.print(l.getAuthorDraft());%> </a>
+							<a><% out.print(l.getAuthorDraft());%> </a>
 						</div>
 						<div class="col-md-1 glyphicon glyphicon-heart" id="draft-heart">
 							539</div>

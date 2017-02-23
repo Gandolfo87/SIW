@@ -1,0 +1,642 @@
+<%@page import="model.Draft"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>DraftAudio-Pubblic Draft</title>
+<!-- MidiWeb & Varie -->
+<script src="midi/abcjs_editor_latest-min.js" type="text/javascript"></script>
+<script src="midi/abcjs_basic_2.3-min.js" type="text/javascript"></script>
+<script src="midi/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+
+<script src="midi/editor.js" type='text/javascript'></script>
+
+
+
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/user.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<div class="container">
+		<div id="logo" class="col-sm-6 col-sm-push-3 col-md-6 col-md-push-3">
+
+			<img class="img-responsive" src="img/logo.png">
+		</div>
+	</div>
+	<% Draft draft = (Draft)request.getSession().getAttribute("draft"); %>
+<input type="text" class="form-control inputInfo" id="Composition" value="<%draft.getMusicalFigure();%>">
+	<div id="container" class="container">
+		<div id="rigaZero" class="row">
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="title">Title</label> <input type="text"
+						class="form-control inputInfo" id="title" value="<%draft.getName(); %>">
+				</div>
+			</form>
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="composer">Composer</label> <input type="text"
+						class="form-control inputInfo" id="composer"
+						value="<%draft.getComposer(); %>" >
+				</div>
+			</form>
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="tempo">Tempo</label> <input type="number"
+						onkeyup="properties_apply()" class="form-control inputInfo" id="tempo" value="<%draft.getTempo(); %>">
+				</div>
+			</form>
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="timeSignature">Time Sign.</label> <input type="text" class="form-control inputInfo"
+						id="timeSignature" value="<%draft.getTimeSignature();%>">
+				</div>
+			</form>
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="noteUnit">Note Unit</label> <input type="text"
+						class="form-control inputInfo" id="<%draft.getNoteUnit(); %>" value="1/8">
+				</div>
+			</form>
+			<form class="hidden-xs col-sm-2 col-md-2" role="form">
+				<div class="form-group">
+					<label for="keySignature inputInfo">Key Signature</label> <input
+						id="keySignature" class="form-control Dropdown" value ="<%draft.getKeySignature(); %>">
+				</div>
+			</form>
+		</div>
+		<div id="textRiga" class="row">
+			<form id="abcNotation" class="" role="form">
+				<div class="form-group">
+					<textarea id="abc" cols="50" rows="15"
+						class="form-control inputInfo"></textarea>
+					<textarea id="headers" cols="50" rows="15"
+						class="form-control inputInfo">X: 99
+T:A mardi
+C:Olivier Bouchard
+S:Copyright 2010, Olivier Bouchard
+M:4/4
+L:1/8
+Q:140
+R:reel
+K:Bm
+~f3g fedc|BFBd FBdB|cFce Fcec|dedc ([FB][Fc])[(Ed][Ee])|
+~f3g fedc|BFBd FBdB|cFce Fcec|1dedc [B3F3]e:|2dedc BcB_B||
+%
+~A3B cAcA|dcde fgfe|dcBd cBAc|Bcdc BfdB|
+~A3B cAcA|dcde fgfe|dcBd cBAc|1Bcdc [F2B2] [E2B2]:|2Bcdc [F4B4]||
+</textarea>
+				</div>
+			</form>
+		</div>
+		<div id="primaRiga" class="row">
+			<div id="traditionalNotationxs" class="visible-xs">
+				<div class="col-xs-12">
+					<button onclick="writeC()" id="doxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeD()" id="rexs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeE()" id="mixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeF()" id="faxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeG()" id="solxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeA()" id="laxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeB()" id="sixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<div class="row  rigaInterna">
+						<div class="col-xs-6">
+							<label>Pitch</label>
+						</div>
+						<div class="col-xs-6">
+							<label>Lenght</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<select class="form-control Dropdown">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option selected>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+							</select>
+						</div>
+						<div class="col-xs-6">
+							<select class="form-control Dropdown">
+								<option>0</option>
+								<option>1/4</option>
+								<option>1/2</option>
+								<option>3/4</option>
+								<option selected>1</option>
+								<option>1 1/2</option>
+								<option>1 3/4</option>
+								<option>2</option>
+								<option>3</option>
+								<option>3 1/2</option>
+								<option>4</option>
+								<option>6</option>
+								<option>8</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="traditionalNotation" class=" hidden-xs ">
+				<div class="col-sm-4 col-md-4">
+					<div id="pitch" class="col-sm-7 col-md-8 pitchLenght">
+						<label>Pitch</label>
+					</div>
+					<div class="col-sm-5 col-md-4 pitchLenght">
+						<select id="pitchSelector" class="form-control Dropdown">
+							<option>0</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option selected>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4">
+					<button onclick="writeC()" id="do"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeD()" id="re"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeE()" id="mi"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeF()" id="fa"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeG()" id="sol"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeA()" id="la"
+						class="btn btn-default noteButton" type="button"></button>
+					<button onclick="writeB()" id="si"
+						class="btn btn-default noteButton" type="button"></button>
+				</div>
+				<div class="col-sm-4 col-md-4">
+					<div class="col-sm-5 col-md-4 pitchLenght">
+						<select id="lengthSelector" class="form-control Dropdown">
+							<option>1/8</option>
+							<option>1/7</option>
+							<option>1/6</option>
+							<option>1/5</option>
+							<option>1/4</option>
+							<option>1/3</option>
+							<option>1/2</option>
+							<option selected>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+						</select>
+					</div>
+					<div id="lenght" class="col-sm-7 col-md-8 pitchLenght">
+						<label>Lenght</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="secondaRiga" class="row">
+			<nav id="optionxs" class="visible-xs navbar navbar-default"
+				role="navigation">
+				<div class="navbar-header">
+					<button id="buttonoptionxs" type="button" class="navbar-toggle"
+						data-toggle="collapse" data-target="#example-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand xsMenu" href="#">Option</a>
+				</div>
+				<div class="collapse navbar-collapse" id="example-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a class="xsMenu" href="#">Note</a></li>
+						<li><a class="xsMenu" href="#">File Info</a></li>
+						<li><a class="xsMenu" href="#">Sheet Option</a></li>
+					</ul>
+				</div>
+			</nav>
+			<form class="hidden" role="form">
+				<div class="form-group">
+					<label for="nameFilexs">File Name</label> <input type="text"
+						class="form-control inputInfoxs" id="nameFilexs"
+						placeholder="Enter File Name">
+				</div>
+				<div class="form-group">
+					<label for="titlexs">Title</label> <input type="text"
+						class="form-control inputInfoxs" id="titlexs"
+						placeholder="Enter Title">
+				</div>
+				<div class="form-group">
+					<label for="subTitlexs">Subtitle</label> <input type="text"
+						class="form-control inputInfoxs" id="subTitlexs"
+						placeholder="Enter Subtitle">
+				</div>
+				<div class="form-group">
+					<label for="composerxs">Composer</label> <input type="text"
+						class="form-control inputInfoxs" id="composerxs"
+						placeholder="Enter Composer Name">
+				</div>
+			</form>
+			<form class="hidden" role="form">
+				<div class="form-group">
+					<label for="keySignature inputInfoxs">Key Signature</label> <select
+						id="keySignaturexs" class="form-control Dropdown">
+						<option>F# (fa# maggiore)</option>
+						<option>B (si maggiore)</option>
+						<option>E (mi maggiore)</option>
+						<option>A (la maggiore)</option>
+						<option>D (re maggiore)</option>
+						<option>G (sol maggiore)</option>
+						<option selected>C (do maggiore)</option>
+						<option>F (fa maggiore)</option>
+						<option>Bb (sib maggiore)</option>
+						<option>Eb (mib maggiore)</option>
+						<option>Ab (lab maggiore)</option>
+						<option>Db (reb maggiore)</option>
+						<option>Gb (solb maggiore)</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="timeSignaturexs">Time Signature</label> <input
+						type="text" class="form-control inputInfoxs" id="timeSignaturexs"
+						value="4/4">
+				</div>
+				<div class="form-group">
+					<label for="noteUnitxs">Note Unit</label> <input type="text"
+						class="form-control inputInfoxs" id="noteUnitxs" value="1/4">
+				</div>
+				<div class="form-group">
+					<label for="tempoxs">Tempo</label> <input type="text"
+						class="form-control inputInfoxs" id="tempoxs" value="120">
+				</div>
+			</form>
+			<div id="menuSymbolButtonxs" class="hidden">
+				<button onclick="sharp()" id="sharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleSharp()" id="doublesharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="natural()" id="neutralxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="flat()" id="flatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleFlat()" id="doubleflatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteTrebleClef()" id="cleftreblexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeZ()" id="restButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="endOfTheLine()" id="enldineButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeAltoClef()" id="clefaltoxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteBassClef()" id="clefbassxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSingleBar()" id="singlebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeDoubleBar()" id="doublebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingStartBar()" id="close1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingEndBar()" id="close2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatStart()" id="repeat1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatEnd()" id="repeat2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="RepeatEndStart()" id="repeat3barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeTie()" id="tiexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPPP()" id="ppppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPP()" id="pppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePP()" id="ppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeP()" id="pxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMP()" id="mpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSF()" id="sfzxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMF()" id="mfxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFFF()" id="ffffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFF()" id="fffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFF()" id="ffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFORTE()" id="fxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeChord()" id="chordxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+			</div>
+			<div id="menuSymbolButton" class="hidden-xs">
+				<button onclick="sharp()" id="sharp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="doubleSharp()" id="doublesharp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="natural()" id="neutral"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="flat()" id="flat"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="doubleFlat()" id="doubleflat"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="wirteTrebleClef()" id="cleftreble"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeZ()" id="restButton"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="endOfTheLine()" id="endlineButton"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeAltoClef()" id="clefalto"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="wirteBassClef()" id="clefbass"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeSingleBar()" id="singlebarline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeDoubleBar()" id="doublebarline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeClosingStartBar()" id="close1barline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeClosingEndBar()" id="close2barline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeRepeatStart()" id="repeat1barline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeRepeatEnd()" id="repeat2barline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="RepeatEndStart()" id="repeat3barline"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeTie()" id="tie"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writePPPP()" id="pppp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writePPP()" id="ppp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writePP()" id="pp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeP()" id="p"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeMP()" id="mp"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeSF()" id="sfz"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeMF()" id="mf"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeFFFF()" id="ffff"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeFFF()" id="fff"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeFF()" id="ff"
+					class="btn btn-default symbolButton" type="button"></button>
+				<button onclick="writeFORTE()" id="f"
+					class="btn btn-default symbolButton" type="button"></button>
+
+
+				<button onclick="writeChord()" id="chord" value="OFF"
+					class="btn btn-default symbolButton" type="button"></button>
+			</div>
+		</div>
+		<div id="terzaRiga" class="row">
+			<div id="playStopBarxs" class="visible-xs">
+				<button onclick="playMIDI()" id="playxs" class="btn btn-default optionButtonxs"
+					type="button"></button>
+				<button id="pausexs" class="btn btn-default optionButtonxs"
+					type="button"></button>
+				<button onclick="stopMIDI()" id="stopxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="reset()" id="resetxs"
+					class="btn btn-default optionButtonxs" type="reset"></button>
+				<button onclick="undo()" id="undoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="redo()" id="redoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="save()" id="savexs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="requestShare()" id="forkxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="like()" id="likexs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="downloadMidi()" id="downloadxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+			</div>
+			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5 col-lg-3">
+				<button onclick="playMIDI()" id="play" class="btn btn-default optionButton" type="button"></button>
+				<button onclick="stopTranscribe()" id="pause"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="stopMIDI()" id="stop"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="reset()" id="reset"
+					class="btn btn-default optionButton" type="reset"></button>
+				<button onclick="undo()" id="undo"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="redo()" id="redo"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="save()" id="save"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="requestShare()" id="fork"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="like()" id="like"
+					class="btn btn-default optionButton" type="button"></button>
+
+				<label id="upload" class="btn btn-default optionButton" for="load"></label>
+				<input class="hidden" id="load" type="file" onchange="load()">
+				<button onclick="downloadMidi()" id="download"
+					class="btn btn-default optionButton" type="button"></button>
+				<div name="midi" class="midi" id="midi"></div>
+			</div>
+			<div id="undoRedoBar" class="hidden-xs col-sm-1 col-md-3"></div>
+			<div id="metronomoBarxs" class="hidden-xs">
+				<button id="recxs" class="btn btn-default btn-circle optionButtonxs"
+					type="button"></button>
+				<label>Metronomo</label> <input id="metronomoxs" class="Dropdown"
+					type="number" min="30" max="280" value="120">
+			</div>
+			<div id="metronomoBar" class="hidden-xs col-sm-5 col-md-4">
+				<div id="recbar" class="hidden-xs  col-sm-8 col-md-8">
+					<button onclick="startTranscribe()" id="rec" value="OFF"
+						class="btn btn-default btn-circle optionButton" type="button"></button>
+					<label>Metronomo</label>
+				</div>
+				<div class="hidden-xs col-sm4 col-md-4">
+					<input id="metronomo" class="form-control Dropdown" type="number"
+						min="40" max="280" value="120" onchange="setTempo()"
+						onkeyup="setTempo()">
+				</div>
+			</div>
+		</div>
+
+		<div id="quartaRiga" class="row">
+			<div id="Spartito" class="col-md-12 col-sm-12 ">
+				<div id="paper0"
+					class="paper col-sm-8 col-sm-push-2 col-md-8 col-md-push-2">
+					<div id="score" class="abcScore"></div>
+				</div>
+			</div>
+			<button class="btn btn-primary" data-toggle="collapse"
+				data-target="#demo">See Comments</button>
+		</div>
+
+		<div id="quintaRiga" class="row">
+			<div class="tastiera">
+				<div id="keyboard"></div>
+				<script src="midi/qwerty-hancock.min.js" type="text/javascript"></script>
+				<script src="midi/synth.js" type="text/javascript"></script>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<div class="row " id="comment-section">
+			<div id="demo" class="collapse">
+
+				<hr>
+				<div class="container " id="section container">
+					<!-- comment box -->
+					<div class="user-comment well panel panel-default">
+						<h4>
+							<i class="fa fa-paper-plane-o"></i>
+						</h4>
+						<form role="form">
+							<div class="form-group">
+								<textarea class="form-control" rows="3"
+									placeholder="leave a comment..."></textarea>
+							</div>
+							<button type="submit" name="say" value="" class="btn btn-primary"
+								id="submit-btn">
+								<i class="fa fa-reply"></i> Submit
+							</button>
+						</form>
+					</div>
+
+					<hr>
+
+
+
+					<!-- the comments -->
+
+
+
+
+
+					<div class="comment-warpper  panel-group ">
+
+
+
+
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+								<h3>
+									<i class="fa fa-comment"></i> User1 says: <small> 9:41
+										PM on August 24, 2014</small>
+								</h3>
+							</div>
+
+
+							<div class="panel-body">
+								<p>Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful!</p>
+							</div>
+						</div>
+
+
+
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+								<h3>
+									<i class="fa fa-comment"></i> User2 says: <small> 9:42
+										PM on August 24, 2014</small>
+								</h3>
+							</div>
+
+
+							<div class="panel-body">
+								<p>Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful Excellent post! Thank You the great article, it was
+									useful!</p>
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<!--  
+	<div id="noteMenuEdit" class="noteMenuEdit">
+		<input id="edit2Note" type="text" placeholder="insert new value">
+		<button class="btn btn-default buttonMenuEdit" id="modify">Modify</button>
+		<button class="btn btn-default buttonMenuEdit" id="insert">Insert</button>
+		<button class="btn btn-default buttonMenuEdit" id="delete">Delete</button>
+		<button class="btn btn-default buttonMenuEdit" id="cancel1">Cancel</button>
+	</div>
+-->
+
+	<div class="click_menu">
+		<button class="btn btn-default buttonMenuEdit" id="edi_btn">Edit</button>
+		<button class="btn btn-default buttonMenuEdit" id="del_btn">Delete</button>
+		<button class="btn btn-default buttonMenuEdit" id="can_btn">Cancel</button>
+		<div id="note_index"></div>
+	</div>
+
+	<div class="editNote_menu">
+		<input type="text" id="editNote" placeholder="  note ">
+		<button class="btn btn-default buttonMenuEdit" id="mod_btn">Modify</button>
+		<button class="btn btn-default buttonMenuEdit" id="ins_btn">Insert</button>
+		<button class="btn btn-default buttonMenuEdit" id="can_edi_btn">Cancel</button>
+	</div>
+
+</body>
+</html>
