@@ -656,6 +656,13 @@ function save() {
 	// downloadFile.click();
 }
 
+function showDraft(m){
+	melody = m;
+	properties_apply();
+	ensembleAll();
+}
+
+
 function load() {
 	var fileLoaded = document.getElementById('load').files[0];
 	var reader = new FileReader();

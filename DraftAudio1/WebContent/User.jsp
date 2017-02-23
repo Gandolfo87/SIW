@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<% Draft draft = (Draft)request.getSession().getAttribute("draft"); %>
-<input type="text" class="form-control inputInfo" id="Composition" value="<%draft.getMusicalFigure();%>">
+	<script>showRepository(draft.getMusicalFigure())</script>
 	<div id="container" class="container">
 		<div id="rigaZero" class="row">
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
@@ -86,21 +86,7 @@
 					<textarea id="abc" cols="50" rows="15"
 						class="form-control inputInfo"></textarea>
 					<textarea id="headers" cols="50" rows="15"
-						class="form-control inputInfo">X: 99
-T:A mardi
-C:Olivier Bouchard
-S:Copyright 2010, Olivier Bouchard
-M:4/4
-L:1/8
-Q:140
-R:reel
-K:Bm
-~f3g fedc|BFBd FBdB|cFce Fcec|dedc ([FB][Fc])[(Ed][Ee])|
-~f3g fedc|BFBd FBdB|cFce Fcec|1dedc [B3F3]e:|2dedc BcB_B||
-%
-~A3B cAcA|dcde fgfe|dcBd cBAc|Bcdc BfdB|
-~A3B cAcA|dcde fgfe|dcBd cBAc|1Bcdc [F2B2] [E2B2]:|2Bcdc [F4B4]||
-</textarea>
+						class="form-control inputInfo">
 				</div>
 			</form>
 		</div>
