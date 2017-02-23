@@ -1,3 +1,5 @@
+<%@page import="model.Draft"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
@@ -90,7 +92,7 @@
 							<li><a href="#">One more separated link</a></li>
 						</ul></li>
 
-					<li><a type="button" id="go-to-scores-btn"> <i
+					<li><a href="ShowPublicRepo" type="button" id="go-to-scores-btn"> <i
 							class="glyphicon glyphicon-headphones"></i> scores
 					</a></li>
 					<li><a href="Editor.html" type="button" id="go-to-editor-btn"> <i
@@ -136,14 +138,15 @@
 			<div class="navbar-ex1-collapse" id="nav-vert-collapse">
 				<ul class="nav nav-pills nav-stacked admin-menu">
 					<li class="a"><a href="#" data-target-id="home"><i class="fa fa-home fa-fw"></i>Home</a></li>
-					<li><a href="showRepo" data-target-id="yourScores"><i class="fa fa-list-alt fa-fw"></i>Your Scores</a></li>
+					<li><a href="showRepository" data-target-id="yourScores"><i class="fa fa-list-alt fa-fw"></i>Your Scores</a></li>
 					<li><a href="http://www.jquery2dotnet.com" data-target-id="publicScores"><i class="fa fa-file-o fa-fw"></i>Your	Public Scores</a></li>
 					<li><a href="http://www.jquery2dotnet.com" data-target-id="sharedScores"><i	class="fa fa-bar-chart-o fa-fw"></i>Shared Scores</a></li>
 					<li><a href="http://www.jquery2dotnet.com" data-target-id="messages"><i class="fa fa-table fa-fw"></i>Messages</a></li>
 					<li><a href="http://www.jquery2dotnet.com" data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li>
 				</ul>
 			</div>
-
+			
+			
 		</div>
 
 		<!-- finestra che mostra i risultati dal menu dashboard-->
@@ -155,31 +158,33 @@
 
 
 			<div class="col-md-9 well admin-content" id="yourScores">
-			<c:forEach items="${list}" var="element"> 
+			<%List<Draft>list=(List<Draft>)request.getSession().getAttribute("list"); %>
+			
+			<%if(list!=null)for(Draft l:list){; %>
 				<div class="row container-fluid center-block" id="results-section">
-					<!-- un risultato -->
+					<!-- un risultato -->  
 					<div class="panel panel-default col-md-10" id="res-container">
 
 						<div class=" result-panel panel panel-default">
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-2">
-										<a>${element.name}</a>
+										<a><%out.print(l.getName()); %></a>
 									</div>
-									<div class="col-md-2">${element.date}</div>
+									<div class="col-md-2">13/11/1990</div>
 									<div class="col-md-3">
-										<a>${element.authorDraft}</a>
+										<a><%out.print(l.getAuthorDraft()); %></a>
 									</div>
 									<div class="col-md-1 glyphicon glyphicon-heart"
-										id="draft-heart">${element.like}</div>
+										id="draft-heart">100</div>
 									<div class="col-md-1 glyphicon glyphicon-eye-open"
-										id="draft-views">${element.visit}</div>
+										id="draft-views">100</div>
 									<div class="col-md-1 glyphicon glyphicon-link" id="share-draft"></div>
 									<div class="col-md-1 glyphicon glyphicon-remove-circle"
 										id="delete-Draft"></div>
 
 
-									<!-- menu dei collaboratori -->
+									<!-- menu dei collaboratori --> 
 									<div class="col-md-1" id="collaborators">
 										<a href="#" class="dropdown-toggle glyphicon glyphicon-user"
 											data-toggle="dropdown"><span class="caret"></span></a>
@@ -200,7 +205,7 @@
 					</div>
 					<!-- un risultato -->
 				</div>
-			</c:forEach>
+	 		<%} %>
 			</div>
 			
 			<div class="col-md-9 well admin-content" id="publicScores">

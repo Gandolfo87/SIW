@@ -25,10 +25,10 @@ public class SaveDraft extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		draft = (Draft)mapper.readValue(jsonString, Draft.class);
 		if(req.getParameter("publicDraft").equals("true")){
-			draft.setPublic(true);
+			draft.setPublic(false);
 		}
 		else
-			draft.setPublic(false);
+			draft.setPublic(true);
 		draft.setAuthorDraft((String)req.getSession().getAttribute("Email"));
 		for(String s : draft.getMusicalFigure())
 			System.out.println(s);

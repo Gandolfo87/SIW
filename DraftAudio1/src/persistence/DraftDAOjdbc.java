@@ -80,7 +80,7 @@ public class DraftDAOjdbc implements DraftDAO {
 				draft.setKeySignature(result.getString("KeySignature"));
 				draft.setNoteUnit(result.getString("NoteUnit"));
 				draft.setTimeSignature(result.getString("TimeSignature"));
-				String[] parti = result.getString("MusicalFigure").split("++");
+				String[] parti = result.getString("MusicalFigure").split("+");
 				draft.setMusicalFigure(parti);
 			}
 //			findByKeY = "SELECT Associate FROM collaborazioni Where IDDraft = ?";
@@ -118,14 +118,16 @@ public class DraftDAOjdbc implements DraftDAO {
 			while(result.next()){
 				Draft draftTmp = new Draft();
 				draftTmp.setName(result.getString("Name"));
-				draftTmp.setAuthorDraft(result.getString("AuthorDraft"));
+				draftTmp.setAuthorDraft(result.getString("DraftAuthor"));
 				draftTmp.setComposer(result.getString("Composer"));
 				draftTmp.setTempo(result.getInt("Tempo"));
 				draftTmp.setTimeSignature(result.getString("TimeSignature"));
 				draftTmp.setNoteUnit(result.getString("NoteUnit"));
 				draftTmp.setKeySignature(result.getString("KeySignature"));
-				String[] part = result.getString("musicalFigure").split("++");
+				String [] part =(result.getString("MusicalFigure").split("\\+"));
 				draftTmp.setMusicalFigure(part);
+				draftTmp.setPublic(result.getBoolean("Public"));
+				draft.add(draftTmp); 
 			}
 //			for(Draft i : draft){
 //				findAll = "SELECT Associate FROM Collaboration WHERE IDDraft = ?";

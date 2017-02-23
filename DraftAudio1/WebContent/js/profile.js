@@ -33,8 +33,12 @@ $(document).ready(function() {
 		$.ajax({
 			type : "GET",
 			url : url,
-		})
-		$('#' + target).show();
+			async:false,
+			success : function(data){
+				alert("ciao");
+				$('#' + target).show();
+			}
+			})
 
 	});
 });

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import manager.DBManager;
 import model.Draft;
@@ -19,19 +20,25 @@ import model.Draft;
 
 public class ShowRepository extends HttpServlet{
 	@Override
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DBManager db = DBManager.getInstance();
-		List<Draft> result = new LinkedList<>();
-		List<Draft> l = new LinkedList<>();
+		List<Draft> result = new LinkedList<Draft>();
+		List<Draft> l = new LinkedList<Draft>();
 		l = db.getDraftDAO().findAll();
 		for(Draft i: l){
-			if(i.getAuthorDraft() == req.getSession().getAttribute("Email")){
+			if(i.getAuthorDraft().equals(req.getSession().getAttribute("Email"))){
 				result.add(i);//TODO visualizzare la lista su html
 			}
-		}	
-		req.setAttribute("list", result);
-		String nextJSP = "/profile.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+		}
+		resp.setStatus(HttpServletResponse.SC_OK);
+		req.getSession().setAttribute("list", result);
+		
+		String nextJSP = "profile.jsp";
+        RequestDispatcher dispatcher = req.getRequestDispatcher(nextJSP);
+    for (Draft draft : l) {
+		System.out.println(draft.getAuthorDraft());
+	}
         dispatcher.forward(req, resp);
 	}
 }
