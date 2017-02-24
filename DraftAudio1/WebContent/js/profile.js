@@ -35,7 +35,6 @@ $(document).ready(function() {
 			url : url,
 			async:false,
 			success : function(data){
-				alert("ciao");
 				$('#' + target).show();
 			}
 			})

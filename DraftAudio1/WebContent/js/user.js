@@ -1,7 +1,7 @@
 var melody = [];
 var melodyStates = [];
 var states = [];
-var headers = [];
+var headers = $(abc).val();
 var abcText;
 var otherAbc;
 var levels = 0;
@@ -37,54 +37,45 @@ function addState(state, state2) {
 }
 
 function init() {
-		
-		$(".editNote_menu").hide();
-		$(".click_menu").hide();
-	
-		edi = document.getElementById('edi_btn');
-		del = document.getElementById('del_btn');
-		can = document.getElementById('can_btn');
-	
-		edit_mod = document.getElementById('mod_btn');
-		edit_can = document.getElementById('can_edi_btn');
-		edit_ins = document.getElementById('ins_btn');
-		edit_text = document.getElementById('editNote');
-	
-		paper = document.getElementById('paper0');
-	
-		calculateSignature();
-		play_this = document.getElementById('play');
-		stop_this = document.getElementById('stop');
-	
-		abcText = $("#abc");
-		otherAbc = document.getElementById("headers");
-	
-		headersContainer = otherAbc.value;
-		addState(abcText.val());
-		// console.log("value", abcText);
-		
+
+	$(".editNote_menu").hide();
+	$(".click_menu").hide();
+
+	edi = document.getElementById('edi_btn');
+	del = document.getElementById('del_btn');
+	can = document.getElementById('can_btn');
+
+	edit_mod = document.getElementById('mod_btn');
+	edit_can = document.getElementById('can_edi_btn');
+	edit_ins = document.getElementById('ins_btn');
+	edit_text = document.getElementById('editNote');
+
+	paper = document.getElementById('paper0');
+
+	play_this = document.getElementById('play');
+	stop_this = document.getElementById('stop');
+
+	abcText = document.getElementById('abc');
+	headersContainer = otherAbc.value;
+	addState(abcText.value);
+	// console.log("value", abcText);
 
 }
 
-
-var initAll = function() {
-	
-	init();
-
-	abc_editor = new window.ABCJS.Editor("headers", {
-		paper_id : "paper0",
-		warnings_id : "warnings",
-		parser_options : {},
-		render_options : {
-			editable : true,
-			add_classes : true
-		}
-	});
-};
-
-
-
-
+//window.onload = function() {
+//	init();
+//
+//	abc_editor = new window.ABCJS.Editor("headers", {
+//		paper_id : "paper0",
+//		warnings_id : "warnings",
+//		parser_options : {},
+//		render_options : {
+//			editable : true,
+//			add_classes : true
+//		}
+//	});
+//
+//}
 
 // FUNZIONI DI UTILITA' PER LA GESTIONE DELLA PARTITURA //
 
@@ -412,7 +403,6 @@ function properties_apply() {
 			"L:" + document.getElementById('noteUnit').value + "\n",
 			"Q:" + document.getElementById('tempo').value + "\n" ];
 
-	calculateSignature();
 	headersContainer = headers.join("");
 	ensembleAll();
 
@@ -428,7 +418,7 @@ function ensembleAll() {
 
 	param = JSON.parse(mParams);
 	// autoQ();
-	otherAbc.value = headersContainer + abcText.val();
+	otherAbc.value = headersContainer + abcText.value;
 
 	// array di tipo tune object da passare come parametro alla funzione di
 	// animazione del cursore
@@ -645,9 +635,7 @@ function save() {
 		success : function(data) {
 			if (data == 1) {
 				alert("Errore nel Salvataggio");
-			} else if(data == 2){
-				alert("Errore, nessuna nota aggiunta")
-			}else{
+			} else {
 				alert("Salvataggio avvenuto con successo");
 			}
 		}
@@ -664,12 +652,28 @@ function save() {
 	// downloadFile.click();
 }
 
-function showDraft(m){
-	
-	melody = m;
-	properties_apply();
-	ensembleAll();
+
+function showComposition() {
+	console.log($("#abc").val());
+	headers = $("#abc").val();
+	console.log("stampo headers",$("#abc").val());
+	abc_editor = new window.ABCJS.Editor("headers", {
+		paper_id : "paper0",
+		warnings_id : "warnings",
+		parser_options : {},
+		render_options : {
+			editable : true,
+			add_classes : true
+		}
+	});
+//	new ABCJS.Editor("abc", { canvas_id: "paper0",
+//		midi_id: "midi",
+//		warnings_id: "warnings",
+//		parser_params: {}
+//	});
+//	new ABCJS.Editor("abc", {generate_midi: true, generate_warnings: false});
 }
+
 
 
 function load() {
@@ -718,13 +722,6 @@ function stopMIDI() {
 	MIDIjs.stop();
 }
 
-
-function loadMelody(externalMelody){
-	melody=[];
-	melody = externalMelody.split("+");
-	console.log(melody);
-}
-
 // solo per xs senza cursore per testing
 function playMIDI() {
 	ABCJS.renderPlayMidi(midi, otherAbc.value, {}, {}, {});
@@ -733,148 +730,3 @@ function playMIDI() {
 	MIDIjs.play(midlink);
 
 }
-/*
- * function animateCursor() {
- * 
- * var paper = document.getElementById('paper0');
- * window.ABCJS.startAnimation(paper, abc_editor.tunes[0], {"showCursor" :
- * true,"bpm" : 120 });
- *  }
- * 
- * 
- * 
- * function stopCurrentlyPlayingTune() { MIDI.player.stop(); }
- * 
- */
-
-// SHORTCUTS VARIE
-shortcut.add("Ctrl+Z", function() {
-	undo();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Ctrl+Y", function() {
-	redo();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-// shortCut delle note da 1 a 7, do...si
-
-shortcut.add("Alt+1", function() {
-	writeC();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-shortcut.add("Alt+2", function() {
-	writeD();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-shortcut.add("Alt+3", function() {
-	writeE();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-shortcut.add("Alt+4", function() {
-	writeF();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-shortcut.add("Alt+5", function() {
-	writeG();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-shortcut.add("Alt+6", function() {
-	writeA();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+7", function() {
-	writeB();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+P", function() {
-	writeZ();
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+Enter", function() {
-	endOfTheLine();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+B", function() {
-	writeSingleBar();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+S", function() {
-	save();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Alt+M", function() {
-	save();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Shift+R", function() {
-	startTranscribe();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});
-
-shortcut.add("Shift+C", function() {
-	reset();
-
-}, {
-	'type' : 'keydown',
-	'propagate' : true,
-	'target' : document
-});

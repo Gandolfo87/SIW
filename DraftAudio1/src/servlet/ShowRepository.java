@@ -37,7 +37,6 @@ public class ShowRepository extends HttpServlet{
 		String nextJSP = "profile.jsp";
         RequestDispatcher dispatcher = req.getRequestDispatcher(nextJSP);
     for (Draft draft : l) {
-		System.out.println(draft.getAuthorDraft());
 	}
         dispatcher.forward(req, resp);
 	}

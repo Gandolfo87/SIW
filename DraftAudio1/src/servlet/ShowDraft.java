@@ -19,9 +19,16 @@ public class ShowDraft extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DBManager db = DBManager.getInstance();
 		Draft draft = null;
-		draft = db.getDraftDAO().findByPrimaryKey(Integer.parseInt(req.getParameter("id")));
-		req.getSession().setAttribute("draft", draft);
-		String nextJSP = "/User.jsp";
+		draft = db.getDraftDAO().findByPrimaryKey((Integer.parseInt(req.getParameter("id"))));
+		draft.setVisit(draft.getVisit()+1);
+		db.getDraftDAO().update(draft);
+		String s = "T:" + draft.getName()+ "\n"+"C:" + draft.getComposer() + "\n"+"K:" + draft.getKeySignature() + "\n"+
+		"M:" + draft.getTimeSignature() + "\n"+"L:" + draft.getNoteUnit() + "\n"+"Q:" + draft.getTempo() + "\n";
+		for(String i : draft.getMusicalFigure()){
+			s+=i;
+		}
+		req.getSession().setAttribute("draft", s);
+		String nextJSP = "/user1.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(req, resp);
 	}

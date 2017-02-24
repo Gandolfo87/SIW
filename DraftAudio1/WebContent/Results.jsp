@@ -88,7 +88,7 @@
 						<li><a href="#">One more separated link</a></li>
 					</ul></li>
 
-				<li><a type="button" id="go-to-scores-btn"> <i
+				<li><a href="ShowPublicRepo" type="button" id="go-to-scores-btn"> <i
 						class="glyphicon glyphicon-headphones"></i> scores
 				</a></li>
 				<li><a type="button" id="go-to-editor-btn"> <i
@@ -131,16 +131,17 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-4">
-							<a href="ShowDraft?id=<%l.getId();%>"><%out.print(l.getName()); %></a>
+							<a href="ShowDraft?id=<%out.print(l.getId());%>"><%out.print(l.getName()); %></a>
 						</div>
 						<div class="col-md-3">1/9/1939</div>
 						<div class="col-md-3">
 							<a><% out.print(l.getAuthorDraft());%> </a>
 						</div>
 						<div class="col-md-1 glyphicon glyphicon-heart" id="draft-heart">
-							539</div>
+							5</div>
 						<div class="col-md-1 glyphicon glyphicon-eye-open"
-							id="draft-views">800</div>
+							id="draft-views">
+							<%out.print(" "+l.getVisit()); %></div>
 					</div>
 				</div>
 			</div>

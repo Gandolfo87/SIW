@@ -13,6 +13,7 @@ public class Draft {
 	private String keySignature;
 	private String musicalFigure [];
 	private boolean isPublic;
+	private int visit;
 	public String getName() {
 		return name;
 	}
@@ -78,5 +79,11 @@ public class Draft {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getVisit() {
+		return visit;
+	}
+	public void setVisit(int visit) {
+		this.visit = visit;
 	}
 }

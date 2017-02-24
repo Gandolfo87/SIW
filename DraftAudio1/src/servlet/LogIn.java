@@ -35,13 +35,11 @@ public class LogIn extends HttpServlet{
 					session.setAttribute("Email", user.getEmail());
 			}else{
 				resp.getWriter().print("1");
-				System.out.println("pass Sbagliata");
 				resp.setStatus(HttpServletResponse.SC_OK); 
 			}
 		}else{
-			System.out.println("Stringa vuota");
 			resp.getWriter().print("1");
 			resp.setStatus(HttpServletResponse.SC_OK); 
 		}
-}
+	}
 }

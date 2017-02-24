@@ -1,26 +1,25 @@
+<%@page import="model.Draft"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>DraftAudio-Pubblic Draft</title>
+<title>DraftAudio Editor</title>
 <!-- MidiWeb & Varie -->
 <script src="midi/abcjs_editor_latest-min.js" type="text/javascript"></script>
 <script src="midi/abcjs_basic_2.3-min.js" type="text/javascript"></script>
 <script src="midi/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
-
+<script type='text/javascript' src=js/shortcut.js></script>
 <script src="midi/editor.js" type='text/javascript'></script>
-
-
-
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/user.css" rel="stylesheet">
+<link href="css/editor.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,10 +29,11 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+	<input type="text" class="form-control inputInfo" id="IDDraft" value="">
+	<input type="number" class="form-control inputInfo" id="isPublic" value="1">
+	<%Draft draft = (Draft)request.getSession().getAttribute("loadDraft"); %>
 	<div class="container">
-
 		<div id="logo" class="col-sm-6 col-sm-push-3 col-md-6 col-md-push-3">
-
 			<img class="img-responsive" src="img/logo.png">
 		</div>
 	</div>
@@ -41,42 +41,42 @@
 		<div id="rigaZero" class="row">
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="title">Title</label> <input type="text"
-						class="form-control inputInfo" id="title" value="NewScore"
+					<label for="title"></label> <input type="text"
+						class="form-control inputInfo" id="title" value=""
 						onkeyup="properties_apply()">
 				</div>
 			</form>
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="composer">Composer</label> <input type="text"
+					<label for="composer"></label> <input type="text"
 						class="form-control inputInfo" id="composer"
-						value="Enter Composer Name" onkeyup="properties_apply()">
+						value="" onkeyup="properties_apply()">
 				</div>
 			</form>
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="tempo">Tempo</label> <input type="number"
+					<label for="tempo"></label> <input type="number"
 						onkeyup="properties_apply()" onchange="properties_apply()"
-						class="form-control inputInfo" id="tempo" value="120">
+						class="form-control inputInfo" id="tempo" value="">
 				</div>
 			</form>
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="timeSignature">Time Sign.</label> <input type="text"
+					<label for="timeSignature"></label> <input type="text"
 						onkeyup="properties_apply()" class="form-control inputInfo"
-						id="timeSignature" value="4/4">
+						id="timeSignature" value="">
 				</div>
 			</form>
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="noteUnit">Note Unit</label> <input type="text"
+					<label for="noteUnit"></label> <input type="text"
 						onkeyup="properties_apply()" class="form-control inputInfo"
-						id="noteUnit" value="1/8">
+						id="noteUnit" value="">
 				</div>
 			</form>
 			<form class="hidden-xs col-sm-2 col-md-2" role="form">
 				<div class="form-group">
-					<label for="keySignature inputInfo">Key Signature</label> <select
+					<label for="keySignature inputInfo"></label> <select
 						id="keySignature" class="form-control Dropdown"
 						onchange="properties_apply()">
 						<option>F# (fa# maggiore)</option>
@@ -100,9 +100,21 @@
 			<form id="abcNotation" class="" role="form">
 				<div class="form-group">
 					<textarea id="abc" cols="50" rows="15"
-						class="form-control inputInfo"></textarea>
+						class="form-control inputInfo"><%for(String i: draft.getMusicalFigure())out.print(i); %></textarea>
 					<textarea id="headers" cols="50" rows="15"
-						class="form-control inputInfo"><%out.print(request.getSession().getAttribute("draft"));%></textarea>
+						class="form-control inputInfo"></textarea>
+						<script>
+						
+						$(document).ready(function() {
+							
+							initAll();
+							
+							var k = '<%=request.getAttribute("music")%>';
+							loadMelody(k);
+							ensembleAll()
+						});
+						
+						</script>
 				</div>
 			</form>
 		</div>
@@ -442,15 +454,14 @@
 					class="btn btn-default optionButtonxs" type="button"></button>
 				<button onclick="save()" id="savexs"
 					class="btn btn-default optionButtonxs" type="button"></button>
-				<button onclick="requestShare()" id="forkxs"
-					class="btn btn-default optionButtonxs" type="button"></button>
-				<button onclick="like()" id="likexs"
-					class="btn btn-default optionButtonxs" type="button"></button>
+
+
 				<button onclick="downloadMidi()" id="downloadxs"
 					class="btn btn-default optionButtonxs" type="button"></button>
 			</div>
-			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5 col-lg-3">
-				<button onclick="playMIDI()" id="play" class="btn btn-default optionButton" type="button"></button>
+			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5">
+				<button  id="play"
+					class="btn btn-default optionButton" type="button"></button>
 				<button onclick="stopTranscribe()" id="pause"
 					class="btn btn-default optionButton" type="button"></button>
 				<button onclick="stopMIDI()" id="stop"
@@ -463,11 +474,6 @@
 					class="btn btn-default optionButton" type="button"></button>
 				<button onclick="save()" id="save"
 					class="btn btn-default optionButton" type="button"></button>
-				<button onclick="requestShare()" id="fork"
-					class="btn btn-default optionButton" type="button"></button>
-				<button onclick="like()" id="like"
-					class="btn btn-default optionButton" type="button"></button>
-
 				<label id="upload" class="btn btn-default optionButton" for="load"></label>
 				<input class="hidden" id="load" type="file" onchange="load()">
 				<button onclick="downloadMidi()" id="download"
@@ -475,11 +481,12 @@
 				<div name="midi" class="midi" id="midi"></div>
 			</div>
 			<div id="undoRedoBar" class="hidden-xs col-sm-1 col-md-3"></div>
-			<div id="metronomoBarxs" class="hidden-xs">
-				<button id="recxs" class="btn btn-default btn-circle optionButtonxs"
-					type="button"></button>
+			<div id="metronomoBarxs" class="visible-xs">
+				<button onclick="startTranscribe()" id="recxs" value="OFF"
+					class="btn btn-default btn-circle optionButtonxs" type="button"></button>
 				<label>Metronomo</label> <input id="metronomoxs" class="Dropdown"
-					type="number" min="30" max="280" value="120">
+					type="number" min="40" max="280" value="120" onchange="setTempo()"
+					onkeyup="setTempo()">
 			</div>
 			<div id="metronomoBar" class="hidden-xs col-sm-5 col-md-4">
 				<div id="recbar" class="hidden-xs  col-sm-8 col-md-8">
@@ -496,14 +503,12 @@
 		</div>
 
 		<div id="quartaRiga" class="row">
-			<div id="Spartito" class="col-md-12 col-sm-12 ">
+			<div id="Spartito" class="col-md-12 col-sm-12">
 				<div id="paper0"
 					class="paper col-sm-8 col-sm-push-2 col-md-8 col-md-push-2">
 					<div id="score" class="abcScore"></div>
 				</div>
 			</div>
-			<button class="btn btn-primary" data-toggle="collapse"
-				data-target="#demo">See Comments</button>
 		</div>
 
 		<div id="quintaRiga" class="row">
@@ -514,103 +519,6 @@
 
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-		<div class="row " id="comment-section">
-			<div id="demo" class="collapse">
-
-				<hr>
-				<div class="container " id="section container">
-					<!-- comment box -->
-					<div class="user-comment well panel panel-default">
-						<h4>
-							<i class="fa fa-paper-plane-o"></i>
-						</h4>
-						<form role="form">
-							<div class="form-group">
-								<textarea class="form-control" rows="3"
-									placeholder="leave a comment..."></textarea>
-							</div>
-							<button type="submit" name="say" value="" class="btn btn-primary"
-								id="submit-btn">
-								<i class="fa fa-reply"></i> Submit
-							</button>
-						</form>
-					</div>
-
-					<hr>
-
-
-
-					<!-- the comments -->
-
-
-
-
-
-					<div class="comment-warpper  panel-group ">
-
-
-
-
-						<div class="panel panel-default">
-
-							<div class="panel-heading">
-								<h3>
-									<i class="fa fa-comment"></i> User1 says: <small> 9:41
-										PM on August 24, 2014</small>
-								</h3>
-							</div>
-
-
-							<div class="panel-body">
-								<p>Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful!</p>
-							</div>
-						</div>
-
-
-
-						<div class="panel panel-default">
-
-							<div class="panel-heading">
-								<h3>
-									<i class="fa fa-comment"></i> User2 says: <small> 9:42
-										PM on August 24, 2014</small>
-								</h3>
-							</div>
-
-
-							<div class="panel-body">
-								<p>Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful Excellent post! Thank You the great article, it was
-									useful!</p>
-							</div>
-						</div>
-
-
-					</div>
-
-
-
-				</div>
-			</div>
-
-
-		</div>
-
-
 
 
 

@@ -30,13 +30,17 @@ public class SaveDraft extends HttpServlet {
 		else
 			draft.setPublic(true);
 		draft.setAuthorDraft((String)req.getSession().getAttribute("Email"));
-		for(String s : draft.getMusicalFigure())
-			System.out.println(s);
+		draft.setVisit(0);
+		if(draft.getMusicalFigure().length != 0)
 		DBManager.getInstance().getDraftDAO().save(draft);
+		else{
+			resp.getWriter().print("2");
+			resp.setStatus(HttpServletResponse.SC_OK);
+		}
+			
 		}
 		else{
 			resp.getWriter().print("1");
-			System.out.println("File vuoto");
 			resp.setStatus(HttpServletResponse.SC_OK);
 		}
 	}

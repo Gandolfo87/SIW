@@ -22,7 +22,7 @@ public class DraftDAOjdbc implements DraftDAO {
 	public void save(Draft draft) {
 		Connection connection = dataSource.getConnection();
 		try {
-			String insert = "insert into draft(Name, DraftAuthor, Composer, Tempo, TimeSignature, NoteUnit, KeySignature, MusicalFigure, Public) values (?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into draft(Name, DraftAuthor, Composer, Tempo, TimeSignature, NoteUnit, KeySignature, MusicalFigure, Public, Visit) values (?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, draft.getName());
 			statement.setString(2, draft.getAuthorDraft());
@@ -33,13 +33,12 @@ public class DraftDAOjdbc implements DraftDAO {
 			statement.setString(7, draft.getKeySignature());
 			String musicalFigure="";
 			for(String s : draft.getMusicalFigure()){
-				System.out.println(s);
 				musicalFigure+=s;
-				musicalFigure+="++";
+				musicalFigure+="+";
 			}
-			System.out.println(musicalFigure);
 			statement.setString(8, musicalFigure);
 			statement.setBoolean(9, draft.isPublic());
+			statement.setInt(10, draft.getVisit());
 			statement.executeUpdate();
 //			insert = "insert into collaborazioni(Associate, DraftName, AuthorDraft) values(?,?,?)";
 //			for(String i : draft.getCollaboratori()){
@@ -74,27 +73,18 @@ public class DraftDAOjdbc implements DraftDAO {
 				draft = new Draft();
 				draft.setId(result.getInt("ID"));
 				draft.setName(result.getString("Name"));
-				draft.setAuthorDraft(result.getString("AuthorDraft"));
+				draft.setAuthorDraft(result.getString("DraftAuthor"));
 				draft.setComposer(result.getString("Composer"));
 				draft.setTempo(result.getShort("Tempo"));
 				draft.setKeySignature(result.getString("KeySignature"));
 				draft.setNoteUnit(result.getString("NoteUnit"));
 				draft.setTimeSignature(result.getString("TimeSignature"));
-				String[] parti = result.getString("MusicalFigure").split("+");
+				draft.setPublic(result.getBoolean("Public"));
+				String[] parti = result.getString("MusicalFigure").split("\\+");
 				draft.setMusicalFigure(parti);
+				draft.setVisit(result.getInt("Visit"));
 			}
-//			findByKeY = "SELECT Associate FROM collaborazioni Where IDDraft = ?";
-//			statement = connection.prepareStatement(findByKeY);
-//			statement.setInt(1, id);
-//			result = statement.executeQuery();
-//			String[] tmp = null;
-//			int i = 0;
-//			while(result.next()){
-//				tmp[i] = (result.getString("Associate"));
-//				i++;
-//			}
-//			if(tmp.length != 0)
-//				draft.setCollaboratori(tmp);
+
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally {
@@ -117,6 +107,7 @@ public class DraftDAOjdbc implements DraftDAO {
 			ResultSet result = statement.executeQuery();
 			while(result.next()){
 				Draft draftTmp = new Draft();
+				draftTmp.setId(result.getInt("ID"));
 				draftTmp.setName(result.getString("Name"));
 				draftTmp.setAuthorDraft(result.getString("DraftAuthor"));
 				draftTmp.setComposer(result.getString("Composer"));
@@ -127,7 +118,9 @@ public class DraftDAOjdbc implements DraftDAO {
 				String [] part =(result.getString("MusicalFigure").split("\\+"));
 				draftTmp.setMusicalFigure(part);
 				draftTmp.setPublic(result.getBoolean("Public"));
+				draftTmp.setVisit(result.getInt("Visit"));
 				draft.add(draftTmp); 
+				System.out.println("ID "+draftTmp.getId()+ " Name "+ draftTmp.getName());
 			}
 //			for(Draft i : draft){
 //				findAll = "SELECT Associate FROM Collaboration WHERE IDDraft = ?";
@@ -158,7 +151,7 @@ public class DraftDAOjdbc implements DraftDAO {
 	public void update(Draft draft) {
 		Connection connection = dataSource.getConnection();
 		try {
-			String update = "update draft SET Name = ?, Composer = ?, Metronome = ?, TimeSignature = ?, NoteUnit = ?, KeySignature = ?, MusicalFigure = ?, Public = ?, DraftAuthor = ? WHERE ID = ?";
+			String update = "UPDATE draft SET Name = ?, Composer = ?, Tempo = ?, TimeSignature = ?, NoteUnit = ?, KeySignature = ?, MusicalFigure = ?, Public = ?, DraftAuthor = ?, Visit = ? WHERE ID = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, draft.getName());
 			statement.setString(2, draft.getComposer());
@@ -167,14 +160,15 @@ public class DraftDAOjdbc implements DraftDAO {
 			statement.setString(5, draft.getNoteUnit());
 			statement.setString(6, draft.getKeySignature());
 			String musicalFigure="";
-			for(int i = 0; i < draft.getMusicalFigure().length; i++){
-				musicalFigure.concat(draft.getMusicalFigure()[i]);
-				musicalFigure.concat("++");
+			for(String i : draft.getMusicalFigure()){
+				musicalFigure+=i;
+				musicalFigure+="+";
 			}
 			statement.setString(7, musicalFigure);
 			statement.setBoolean(8, draft.isPublic());
 			statement.setString(9, draft.getAuthorDraft());
-			statement.setInt(10, draft.getId());
+			statement.setInt(10, draft.getVisit());
+			statement.setInt(11, draft.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
